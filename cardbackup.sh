@@ -30,7 +30,7 @@ done
 # When the USB storage device is detected, mount it
 sudo mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
 
-# Blink blue to indicate that the storage device has been mounted.
+# Blink blue to indicate that the storage device has been mounted
 blinkstick --repeats 3 --blink blue
 
 # Wait for a card reader
@@ -45,11 +45,11 @@ done
 sudo mount /dev/$CARD_DEV -t vfat $CARD_PATH
 UUID=$(ls -l /dev/disk/by-uuid/ | grep $CARD_DEV | cut -d" " -f9)
 
-# Blink yellow to indicate that the storage device has been mounted.
+# Blink yellow to indicate that the storage device has been mounted
 blinkstick --repeats 3 --blink yellow
 
-# If UUID doesn't exist, read the id file on the card and use it as a directory name in the backup path.
-# Otherwise use the UUID as a directory name in the backup path. 
+# If UUID doesn't exist, read the id file on the card and use it as a directory name in the backup path
+# Otherwise use the UUID as a directory name in the backup path
 if [ -z $UUID ]; then
   read -r ID < $CARD_PATH/id
   BACKUP=$BACKUP_PATH/$ID
@@ -57,11 +57,11 @@ else
   BACKUP=$BACKUP_PATH/$UUID
 fi
 
-# Perform backup using rsync.
+# Perform backup using rsync
 sudo rsync -avh $CARD_PATH/ $BACKUP
 
-# Blink magenta to indicate that the backup is completed.
+# Blink magenta to indicate that the backup is completed
 blinkstick --repeats 3 --blink magenta
 
-# Shutdown Raspberry Pi.
+# Shutdown Raspberry Pi
 sudo halt

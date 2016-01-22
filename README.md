@@ -1,5 +1,5 @@
 # Little Backup Box
-A set of Bash scripts for using Raspberry Pi as a backup device.
+A set of Bash scripts that transform a Raspberry Pi into a autonomous and automagical backup device for storage cards and cameras.
 
 ## Installation
 
@@ -9,9 +9,9 @@ A set of Bash scripts for using Raspberry Pi as a backup device.
 
 ## Usage
 
-1. Boot Raspberry Pi
+1. Boot the Raspberry Pi
 2. Plug in the backup storage device first
-3. Plug in the card reader
+3. Plug in the card reader or camera and wait till the Raspberry Pi shuts down
 
 ## Contributing
 
