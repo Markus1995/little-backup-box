@@ -9,8 +9,8 @@ git clone https://github.com/dmpop/little-backup-box.git
 cd little-backup-box
 sudo chmod 755 cardbackup.sh
 sudo chmod 755 camerabackup.sh
-crontab -l | { cat; echo "@reboot sudo /home/pi/little-backup-box/cardbackup.sh"; } | crontab -
-crontab -l | { cat; echo "@reboot sudo /home/pi/little-backup-box/camerabackup.sh"; } | crontab -
+crontab -l | { cat; echo "@reboot sudo /home/pi/little-backup-box/cardbackup.sh >> /home/pi/little-backup-box/cardbackup.log"; } | crontab -
+crontab -l | { cat; echo "@reboot sudo /home/pi/little-backup-box/camerabackup.sh >> /home/pi/little-backup-box/camerabackup.log"; } | crontab -
 
 sudo pip install blinkstick
 sudo blinkstick --add-udev-rule
