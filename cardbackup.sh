@@ -14,7 +14,7 @@
 blinkstick --repeats 3 --blink green
 
 STORAGE_PATH="/media/storage"
-CARD_PATH="/media/sdcard"
+CARD_PATH="/media/card"
 STORAGE_DEV="sda1"
 CARD_DEV="sdb1"
 BACKUP_PATH="/media/storage"

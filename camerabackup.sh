@@ -9,9 +9,9 @@
 # @reboot sudo /home/pi/camerabackup.sh
 # Save the crontab file.
 
-MODEL="USB"
+CAMERA="USB"
 STORAGE_DEV="sda1"
-BACKUP_PATH="/media/storage/"$MODEL
+STORAGE_PATH="/media/storage/"$CAMERA
 
 DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
@@ -22,11 +22,11 @@ done
 
 sudo mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
 
-DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $MODEL)
+DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 while [ -z ${DEVICE} ]
 	do
 	sleep 1
-	DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $MODEL)
+	DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 done
 
 mkdir $BACKUP_PATH && cd $_

@@ -2,7 +2,7 @@
 
 sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get install git-core rsync gphoto2 python-pip -y
 
-sudo mkdir /media/sdcard
+sudo mkdir /media/card
 sudo mkdir /media/storage
 
 git clone https://github.com/dmpop/little-backup-box.git
