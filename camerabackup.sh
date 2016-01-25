@@ -6,12 +6,13 @@
 # sudo chmod 755 camerabackup.sh
 # crontab -e
 # Add the following cronjob:
-# @reboot sudo /home/pi/camerabackup.sh
+# @reboot sudo /path/to/camerabackup.sh
 # Save the crontab file.
 
 CAMERA="USB"
 STORAGE_DEV="sda1"
-STORAGE_PATH="/media/storage/"$CAMERA
+STORAGE_PATH="/media/storage/"
+BACKUP_PATH="/media/storage/"$CAMERA
 
 DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
@@ -29,7 +30,7 @@ while [ -z ${DEVICE} ]
 	DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 done
 
-mkdir $BACKUP_PATH && cd $_
+sudo mkdir $BACKUP_PATH && cd $_
 gphoto2 --get-all-files --skip-existing
 
 sudo halt

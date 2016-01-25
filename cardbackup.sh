@@ -6,7 +6,7 @@
 # sudo chmod 755 cardbackup.sh
 # crontab -e
 # Add the following cronjob:
-# @reboot sudo /home/pi/sdcardbackup.sh
+# @reboot sudo /path/to/sdcardbackup.sh
 # Save the crontab file.
 
 # If BlinkStick (https://www.blinkstick.com) is installed,
