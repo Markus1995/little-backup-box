@@ -13,11 +13,10 @@
 # Blink green to indicate that the script is ready.
 blinkstick --repeats 3 --blink green
 
-STORAGE_PATH="/media/storage"
-CARD_PATH="/media/card"
 STORAGE_DEV="sda1"
+STORAGE_PATH="/media/storage"
 CARD_DEV="sdb1"
-BACKUP_PATH="/media/storage"
+CARD_PATH="/media/card"
 
 # Wait for a USB storage device (e.g., a USB stick)
 DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
@@ -52,13 +51,13 @@ blinkstick --repeats 3 --blink yellow
 # Otherwise use the UUID as a directory name in the backup path
 if [ -z $UUID ]; then
   read -r ID < $CARD_PATH/id
-  BACKUP=$BACKUP_PATH/$ID
+  BACKUP_PATH=$STORAGE_PATH/$ID
 else
-  BACKUP=$BACKUP_PATH/$UUID
+  BACKUP_PATH=$STORAGE_PATH/$UUID
 fi
 
 # Perform backup using rsync
-sudo rsync -avh $CARD_PATH/ $BACKUP
+sudo rsync -avh $CARD_PATH/ $BACKUP_PATH
 
 # Blink magenta to indicate that the backup is completed
 blinkstick --repeats 3 --blink magenta
