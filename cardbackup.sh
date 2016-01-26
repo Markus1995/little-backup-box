@@ -19,29 +19,29 @@ CARD_DEV="sdb1"
 CARD_PATH="/media/card"
 
 # Wait for a USB storage device (e.g., a USB stick)
-DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
+DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
   do
   sleep 1
-  DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
+  DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 done
 
 # When the USB storage device is detected, mount it
-sudo mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
+mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
 
 # Blink blue to indicate that the storage device has been mounted
 blinkstick --repeats 3 --blink blue
 
 # Wait for a card reader
-DEVICE=$(sudo ls /dev/* | grep $CARD_DEV | cut -d"/" -f3)
+DEVICE=$(ls /dev/* | grep $CARD_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
   do
   sleep 1
-  DEVICE=$(sudo ls /dev/sd* | grep $CARD_DEV | cut -d"/" -f3)
+  DEVICE=$(ls /dev/sd* | grep $CARD_DEV | cut -d"/" -f3)
 done
 
 # When the card reader is detected, mount it and obtain its UUID
-sudo mount /dev/$CARD_DEV -t vfat $CARD_PATH
+mount /dev/$CARD_DEV -t vfat $CARD_PATH
 UUID=$(ls -l /dev/disk/by-uuid/ | grep $CARD_DEV | cut -d" " -f9)
 
 # Blink yellow to indicate that the storage device has been mounted
@@ -57,10 +57,10 @@ else
 fi
 
 # Perform backup using rsync
-sudo rsync -avh $CARD_PATH/ $BACKUP_PATH
+rsync -avh $CARD_PATH/ $BACKUP_PATH
 
 # Blink magenta to indicate that the backup is completed
 blinkstick --repeats 3 --blink magenta
 
 # Shutdown Raspberry Pi
-sudo halt
+halt

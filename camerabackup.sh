@@ -14,14 +14,14 @@ STORAGE_DEV="sda1"
 STORAGE_PATH="/media/storage/"
 BACKUP_PATH="/media/storage/"$CAMERA
 
-DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
+DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
   do
   sleep 1
-  DEVICE=$(sudo ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
+  DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 done
 
-sudo mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
+mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
 
 DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 while [ -z ${DEVICE} ]
@@ -30,7 +30,7 @@ while [ -z ${DEVICE} ]
 	DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 done
 
-sudo mkdir $BACKUP_PATH && cd $_
+mkdir $BACKUP_PATH && cd $_
 gphoto2 --get-all-files --skip-existing
 
-sudo halt
+halt
