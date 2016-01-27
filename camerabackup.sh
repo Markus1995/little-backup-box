@@ -12,7 +12,7 @@
 CAMERA="USB"
 STORAGE_DEV="sda1"
 STORAGE_PATH="/media/storage/"
-BACKUP_PATH="/media/storage/$CAMERA
+BACKUP_PATH="/media/storage/"$CAMERA
 
 DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
