@@ -12,7 +12,7 @@
 CAMERA="USB"
 STORAGE_DEV="sda1"
 STORAGE_PATH="/media/storage/"
-BACKUP_PATH="/media/storage/"$CAMERA
+BACKUP_PATH="/media/storage/$CAMERA
 
 DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 while [ -z ${DEVICE} ]
@@ -29,8 +29,10 @@ while [ -z ${DEVICE} ]
 	sleep 1
 	DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 done
-
-mkdir $BACKUP_PATH && cd $_
+if [ ! -d $BACKUP_PATH ]; then
+  mkdir $BACKUP_PATH
+fi
+cd $BACKUP_PATH
 gphoto2 --get-all-files --skip-existing
 
 halt
