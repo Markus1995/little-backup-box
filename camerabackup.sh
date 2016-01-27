@@ -34,5 +34,4 @@ if [ ! -d $BACKUP_PATH ]; then
 fi
 cd $BACKUP_PATH
 gphoto2 --get-all-files --skip-existing
-
 halt
