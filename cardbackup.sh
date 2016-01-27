@@ -51,7 +51,7 @@ blinkstick --repeats 3 --blink yellow
 # Otherwise use the UUID as a directory name in the backup path
 if [ -z $UUID ]; then
   read -r ID < $CARD_PATH/id
-  BACKUP_PATH=$STORAGE_PATH/$ID
+  BACKUP_PATH=$STORAGE_PATH/"$ID"
 else
   BACKUP_PATH=$STORAGE_PATH/$UUID
 fi
