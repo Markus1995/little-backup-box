@@ -21,7 +21,7 @@ while [ -z ${DEVICE} ]
   DEVICE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
 done
 
-mount /dev/$STORAGE_DEV -t ext2 $STORAGE_PATH
+mount /dev/$STORAGE_DEV $STORAGE_PATH
 
 DEVICE=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA)
 while [ -z ${DEVICE} ]
