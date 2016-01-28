@@ -6,6 +6,7 @@ A set of Bash scripts that transform a Raspberry Pi into a autonomous and automa
 1. `wget https://raw.githubusercontent.com/dmpop/little-backup-box/master/install-little-backup-box.sh`
 2. `sudo chmod +x install-little-backup-box.sh`
 3. `./install-little-backup-box.sh`
+4. Run the `crontab -e` command and uncomment the desired cron job to enable it.
 
 ## Usage
 

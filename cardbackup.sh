@@ -6,7 +6,7 @@
 # sudo chmod 755 cardbackup.sh
 # crontab -e
 # Add the following cronjob:
-# @reboot sudo /path/to/sdcardbackup.sh
+# @reboot sudo /path/to/cardbackup.sh
 # Save the crontab file.
 
 # If BlinkStick (https://www.blinkstick.com) is installed,
@@ -59,7 +59,7 @@ fi
 # Perform backup using rsync
 rsync -avh $CARD_PATH/ $BACKUP_PATH
 
-# Light magenta to indicate that the backup is completed
+# Light orange to indicate that the backup is completed
 blinkstick --set-color=ORANGE --brightness=50
 
 # Shutdown Raspberry Pi
