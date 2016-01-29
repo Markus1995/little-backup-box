@@ -13,12 +13,15 @@
 # light green to indicate that the script is ready
 blinkstick --set-color=GREEN --brightness=50
 
-CAMERA_SEARCH_STRING="USB" # Must be a single word!
+# User-defined settings
+CAMERA_SEARCH_STRING="USB" # Run the gphoto2 --auto-detect command. Use the first word of the camera maker's name.
 STORAGE_DEV="sda1"
 STORAGE_PATH="/media/storage" # Create this mount point if it doesn't exist
 CAMERA_BACKUP_PATH=$STORAGE_PATH/$CAMERA_SEARCH_STRING
 CARD_DEV="sdb1"
 CARD_PATH="/media/card" # Create this mount point if it doesn't exist
+
+# Don't edit below this line
 
 # Wait for a USB storage device (e.g., a USB stick)
 STORAGE=$(ls /dev/* | grep $STORAGE_DEV | cut -d"/" -f3)
