@@ -14,3 +14,10 @@ crontab -l | { cat; echo "#@reboot sudo /home/pi/little-backup-box/cardcamerabac
 
 sudo pip install blinkstick
 sudo blinkstick --add-udev-rule
+
+read -p "Connect your the camera and press [Enter]..."
+CAMERA =$(gphoto2 --auto-detect | sed -n '3p' | cut -d ' ' -f 1)
+sed -i s/'CAMERA_SEARCH_STRING="USB"'/'CAMERA_SEARCH_STRING="$CAMERA"'/ cardcamerabackup.sh
+sed -i s/'CAMERA_SEARCH_STRING="USB"'/'CAMERA_SEARCH_STRING="$CAMERA"'/ camerabackup.sh
+
+echo "All done! Run the crontab -e command, uncomment the desired cron job, and reboot."
