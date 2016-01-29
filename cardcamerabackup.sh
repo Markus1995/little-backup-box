@@ -40,7 +40,7 @@ blinkstick --set-color=BLUE --brightness=50
 # Wait for a card reader or a camera
 CARD_READER=$(ls /dev/* | grep $CARD_DEV | cut -d"/" -f3)
 CAMERA=$(gphoto2 --auto-detect | cut -d ' ' -f 1 | grep $CAMERA_SEARCH_STRING)
-while [ -z $CARD_READER ] || [ -z $CAMERA ]
+until [ ! -z $CARD_READER ] || [ ! -z $CAMERA ]
   do
   sleep 1
   CARD_READER=$(ls /dev/sd* | grep $CARD_DEV | cut -d"/" -f3)
@@ -48,7 +48,7 @@ while [ -z $CARD_READER ] || [ -z $CAMERA ]
 done
 
 # If the card reader is detected, mount it and obtain its UUID
-if [ ! -z $CARD_READER ]
+if [ ! -z $CARD_READER ]; then
   mount /dev/$CARD_DEV $CARD_PATH
   UUID=$(ls -l /dev/disk/by-uuid/ | grep $CARD_DEV | cut -d" " -f9)
   # Light yellow to indicate that the storage device has been mounted
@@ -68,7 +68,7 @@ blinkstick --set-color=ORANGE --brightness=50
 fi
 
 #If the camera is detected, transfer photos using gPhoto2
-if [ ! -z $CAMERA ]
+if [ ! -z $CAMERA ]; then
   if [ ! -d $CAMERA_BACKUP_PATH ]; then
     mkdir $CAMERA_BACKUP_PATH
   fi
