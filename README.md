@@ -3,12 +3,13 @@ A set of Bash scripts that transform a Raspberry Pi into a autonomous and automa
 
 ## Installation
 
-```
-wget https://raw.githubusercontent.com/dmpop/little-backup-box/master/install-little-backup-box.sh
-sudo chmod +x install-little-backup-box.sh
-./install-little-backup-box.sh
-sudo reboot
-```
+`wget https://raw.githubusercontent.com/dmpop/little-backup-box/master/install-little-backup-box.sh`
+
+`sudo chmod +x install-little-backup-box.sh`
+
+`./install-little-backup-box.sh`
+
+`sudo reboot`
 
 ## Usage
 
