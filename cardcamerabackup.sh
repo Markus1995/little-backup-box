@@ -52,7 +52,7 @@ done
 # If the card reader is detected, mount it and obtain its UUID
 if [ ! -z $CARD_READER ]; then
   mount /dev/$CARD_DEV $CARD_PATH
-  UUID=$(ls -l /dev/disk/by-uuid/ | grep $CARD_DEV | cut -d" " -f9)
+  UUID=$(blkid -s UUID -o value /dev/$CARD_DEV)
   # Blink yellow to indicate that the storage device has been mounted
   blinkstick --index 0 --repeats 3 --blink yellow
   blinkstick --index 1 --set-color=yellow
