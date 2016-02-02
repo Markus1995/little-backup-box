@@ -10,8 +10,9 @@
 # Save the crontab file.
 
 # If BlinkStick (https://www.blinkstick.com) is installed,
-# light green to indicate that the script is ready
-blinkstick --set-color=GREEN --brightness=50
+# Blink green to indicate that the script is ready
+blinkstick --index 0 --repeats 3 --blink green
+blinkstick --index 1 --set-color=green
 
 # User-defined settings
 CAMERA_SEARCH_STRING="USB" # Run the gphoto2 --auto-detect command. Use the first word of the camera maker's name.
@@ -34,8 +35,9 @@ done
 # When the USB storage device is detected, mount it
 mount /dev/$STORAGE_DEV $STORAGE_PATH
 
-# Light blue to indicate that the storage device has been mounted
-blinkstick --set-color=BLUE --brightness=50
+# Blink turquoise to indicate that the storage device has been mounted
+blinkstick --index 0 --repeats 3 --blink turquoise
+blinkstick --index 1 --set-color=turquoise
 
 # Wait for a card reader or a camera
 CARD_READER=$(ls /dev/* | grep $CARD_DEV | cut -d"/" -f3)
@@ -51,8 +53,9 @@ done
 if [ ! -z $CARD_READER ]; then
   mount /dev/$CARD_DEV $CARD_PATH
   UUID=$(ls -l /dev/disk/by-uuid/ | grep $CARD_DEV | cut -d" " -f9)
-  # Light yellow to indicate that the storage device has been mounted
-  blinkstick --set-color=YELLOW --brightness=50
+  # Blink yellow to indicate that the storage device has been mounted
+  blinkstick --index 0 --repeats 3 --blink yellow
+  blinkstick --index 1 --set-color=yellow
   # If UUID doesn't exist, read the id file on the card and use it as a directory name in the backup path
   # Otherwise use the UUID as a directory name in the backup path
   if [ -z $UUID ]; then
@@ -63,8 +66,9 @@ if [ ! -z $CARD_READER ]; then
   fi
 # Perform backup using rsync
 rsync -avh $CARD_PATH/ $BACKUP_PATH
-# Light orange to indicate that the backup is completed
-blinkstick --set-color=ORANGE --brightness=50
+# Blink firebrick red to indicate that the backup is completed
+blinkstick --index 0 --repeats 3 --blink firebrick
+blinkstick --index 1 --set-color=firebrick
 fi
 
 #If the camera is detected, transfer photos using gPhoto2
@@ -74,8 +78,9 @@ if [ ! -z $CAMERA ]; then
   fi
 cd $CAMERA_BACKUP_PATH
 gphoto2 --get-all-files --skip-existing
-# Light orange to indicate that the backup is completed
-blinkstick --set-color=ORANGE --brightness=50
+# Blink firebrick red to indicate that the backup is completed
+blinkstick --index 0 --repeats 3 --blink firebrick
+blinkstick --index 1 --set-color=firebrick
 fi
 # Shutdown Raspberry Pi
-halt
+shutdown -h now
