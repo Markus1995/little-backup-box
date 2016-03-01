@@ -1,5 +1,5 @@
 # Little Backup Box
-A set of Bash scripts that transform a Raspberry Pi into a autonomous and automagical backup device for storage cards and cameras.
+A set of Bash scripts that transform a Raspberry Pi into an automatic photo backup device.
 
 ## Installation
 
