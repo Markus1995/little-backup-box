@@ -5,7 +5,7 @@ sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get install git-
 sudo mkdir /media/card
 sudo mkdir /media/storage
 
-git clone https://github.com/dmpop/little-backup-box.git
+git clone https://github.com/Markus1995/little-backup-box.git
 cd little-backup-box
 sudo chmod 755 *.sh
 crontab -l | { cat; echo "#@reboot sudo /home/pi/little-backup-box/cardbackup.sh >> /home/pi/little-backup-box/cardbackup.log"; } | crontab -
