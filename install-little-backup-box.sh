@@ -8,9 +8,9 @@ mkdir /media/storage
 git clone https://github.com/dmpop/little-backup-box.git
 cd little-backup-box
 chmod 755 *.sh
-crontab -l | { cat; echo "#@reboot sudo /home/pi/little-backup-box/cardbackup.sh >> /home/pi/little-backup-box/cardbackup.log"; } | crontab -
-crontab -l | { cat; echo "#@reboot sudo /home/pi/little-backup-box/camerabackup.sh >> /home/pi/little-backup-box/camerabackup.log"; } | crontab -
-crontab -l | { cat; echo "#@reboot sudo /home/pi/little-backup-box/cardcamerabackup.sh >> /home/pi/little-backup-box/cardcamerabackup.log"; } | crontab
+crontab -l | { cat; echo "#@reboot /home/pi/little-backup-box/cardbackup.sh >> /home/pi/little-backup-box/cardbackup.log"; } | crontab -
+crontab -l | { cat; echo "#@reboot /home/pi/little-backup-box/camerabackup.sh >> /home/pi/little-backup-box/camerabackup.log"; } | crontab -
+crontab -l | { cat; echo "#@reboot /home/pi/little-backup-box/cardcamerabackup.sh >> /home/pi/little-backup-box/cardcamerabackup.log"; } | crontab
 
 pip install blinkstick
 blinkstick --add-udev-rule
