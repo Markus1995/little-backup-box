@@ -3,10 +3,10 @@
 # sudo apt-get update && sudo apt-get install rsync gphoto2
 
 # To run the script on boot:
-# sudo chmod 755 cardcamerabackup.sh
+# sudo chmod 755 cardandcamera.sh
 # crontab -e
 # Add the following cronjob:
-# @reboot sudo /path/to/cardcamerabackup.sh
+# @reboot sudo /path/to/cardandcamera.sh
 # Save the crontab file.
 
 # Set the ACT LED to heartbeat
