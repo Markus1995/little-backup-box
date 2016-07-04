@@ -3,7 +3,7 @@ A set of Bash scripts that transform a Raspberry Pi into an automatic photo back
 
 ## Installation
 
-`wget https://raw.githubusercontent.com/dmpop/little-backup-box/master/install-little-backup-box.sh`
+`wget https://raw.githubusercontent.com/Markus1995/little-backup-box/master/install-little-backup-box.sh`
 
 `sudo chmod +x install-little-backup-box.sh`
 
